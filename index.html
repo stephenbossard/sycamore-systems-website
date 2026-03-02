@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sycamore Systems LLC — IT, Cybersecurity & AI Consulting</title>
+<meta name="description" content="Sycamore Systems LLC provides expert IT, cybersecurity, and AI consulting for homes and businesses in Pennsylvania. Protect what matters most and work smarter.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green-deep: #1a2e1a;
+    --green-dark: #243524;
+    --green-mid: #3d5a3d;
+    --green-accent: #7cb87c;
+    --green-light: #a8d4a8;
+    --green-pale: #d4e8d4;
+    --cream: #f0f5ed;
+    --white: #ffffff;
+    --text-primary: #1a2e1a;
+    --text-secondary: #4a6a4a;
+    --text-light: #c8dcc8;
+    --border-subtle: rgba(124, 184, 124, 0.2);
+    --shadow-sm: 0 1px 3px rgba(26, 46, 26, 0.08);
+    --shadow-md: 0 4px 20px rgba(26, 46, 26, 0.1);
+    --shadow-lg: 0 12px 40px rgba(26, 46, 26, 0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-primary);
+    background: var(--cream);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 2rem;
+    background: rgba(240, 245, 237, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: all 0.3s ease;
+  }
+
+  nav.scrolled {
+    background: rgba(240, 245, 237, 0.95);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+
+  .nav-brand img {
+    height: 44px;
+    width: auto;
+  }
+
+  .nav-brand span {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--green-accent);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--green-mid); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--green-dark) !important;
+    color: var(--white) !important;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease !important;
+  }
+
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover {
+    background: var(--green-mid) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .mobile-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    margin: 5px 0;
+    transition: all 0.3s;
+    border-radius: 2px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(165deg, var(--green-deep) 0%, #1e3320 40%, var(--green-dark) 100%);
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    background-image:
+      radial-gradient(circle at 2px 2px, var(--green-light) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(124, 184, 124, 0.15), transparent 70%);
+    top: -100px;
+    right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(124, 184, 124, 0.08), transparent 70%);
+    bottom: -50px;
+    left: 10%;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8rem 2rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content { animation: fadeUp 0.8s ease forwards; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(124, 184, 124, 0.12);
+    border: 1px solid rgba(124, 184, 124, 0.25);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--green-light);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero-badge .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--green-accent);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green-accent);
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-accent);
+    color: var(--green-deep);
+    padding: 14px 32px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: var(--green-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(124, 184, 124, 0.3);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--green-light);
+    padding: 14px 32px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: 1px solid rgba(124, 184, 124, 0.3);
+    transition: all 0.25s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--green-accent);
+    background: rgba(124, 184, 124, 0.08);
+  }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-logo-container {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-logo-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(124, 184, 124, 0.15);
+    animation: spin 30s linear infinite;
+  }
+
+  .hero-logo-ring::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: var(--green-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--green-accent);
+  }
+
+  .hero-logo-ring-2 {
+    position: absolute;
+    inset: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(124, 184, 124, 0.1);
+    animation: spin 20s linear infinite reverse;
+  }
+
+  .hero-logo-ring-2::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: 30%;
+    width: 4px;
+    height: 4px;
+    background: var(--green-light);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--green-light);
+  }
+
+  .hero-logo-container img {
+    width: 240px;
+    height: auto;
+    filter: drop-shadow(0 0 40px rgba(124, 184, 124, 0.2));
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── TRUST BAR ─── */
+  .trust-bar {
+    background: var(--white);
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .trust-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .trust-item {
+    opacity: 0;
+    animation: fadeUp 0.5s ease forwards;
+  }
+
+  .trust-item:nth-child(1) { animation-delay: 0.1s; }
+  .trust-item:nth-child(2) { animation-delay: 0.2s; }
+  .trust-item:nth-child(3) { animation-delay: 0.3s; }
+  .trust-item:nth-child(4) { animation-delay: 0.4s; }
+
+  .trust-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--cream);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.75rem;
+    color: var(--green-mid);
+  }
+
+  .trust-item h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .trust-item p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ─── SECTIONS COMMON ─── */
+  section { padding: 6rem 2rem; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green-mid);
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--green-accent);
+    border-radius: 2px;
+  }
+
+  .section-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  /* ─── SERVICES ─── */
+  #services { background: var(--cream); }
+
+  .services-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .services-header .section-subtitle { margin: 0 auto; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green-accent), var(--green-light));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+  }
+
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--green-light);
+  }
+
+  .service-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .service-card p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--white); }
+
+  .about-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: linear-gradient(165deg, var(--green-deep), var(--green-dark));
+    border-radius: 20px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-card-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    background-image:
+      radial-gradient(circle at 2px 2px, var(--green-light) 1px, transparent 0);
+    background-size: 30px 30px;
+  }
+
+  .about-card-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-stat {
+    margin-bottom: 2rem;
+  }
+
+  .about-stat:last-child { margin-bottom: 0; }
+
+  .about-stat-value {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2.5rem;
+    color: var(--green-accent);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .about-stat-label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 400;
+  }
+
+  .about-content .section-subtitle {
+    margin-bottom: 2rem;
+  }
+
+  .about-values {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .about-value {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .about-value-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: var(--cream);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green-mid);
+  }
+
+  .about-value h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .about-value p {
+    font-size: 0.87rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ─── PRICING ─── */
+  #pricing { background: var(--cream); }
+
+  .pricing-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .pricing-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .pricing-header .section-subtitle { margin: 0 auto; }
+
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .pricing-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2.5rem;
+    border: 1px solid var(--border-subtle);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .pricing-card.featured {
+    border: 2px solid var(--green-accent);
+    background: linear-gradient(175deg, var(--white), var(--cream));
+  }
+
+  .pricing-card.featured::before {
+    content: 'Most Popular';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green-dark);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    border-radius: 100px;
+  }
+
+  .pricing-type {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--green-mid);
+    margin-bottom: 0.5rem;
+  }
+
+  .pricing-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .pricing-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    min-height: 42px;
+  }
+
+  .pricing-features {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .pricing-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.5rem 0;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+  }
+
+  .pricing-features li svg {
+    min-width: 18px;
+    color: var(--green-accent);
+  }
+
+  .pricing-card .btn-primary {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 12px 24px;
+  }
+
+  .pricing-card .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 12px 24px;
+    color: var(--text-primary);
+    border-color: var(--border-subtle);
+  }
+
+  .pricing-card .btn-secondary:hover {
+    border-color: var(--green-mid);
+    color: var(--green-mid);
+    background: rgba(124, 184, 124, 0.05);
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: linear-gradient(165deg, var(--green-deep) 0%, var(--green-dark) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image:
+      radial-gradient(circle at 2px 2px, var(--green-light) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .contact-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-inner .section-label { color: var(--green-light); }
+
+  .contact-inner .section-title { color: var(--white); }
+
+  .contact-inner .section-subtitle {
+    color: var(--text-light);
+    margin: 0 auto 3rem;
+  }
+
+  .contact-form {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(124, 184, 124, 0.15);
+    border-radius: 20px;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    text-align: left;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group { margin-bottom: 1rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--green-light);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(124, 184, 124, 0.2);
+    border-radius: 10px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    transition: all 0.2s;
+    outline: none;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(200, 220, 200, 0.4);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--green-accent);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(124, 184, 124, 0.1);
+  }
+
+  .form-group select { cursor: pointer; }
+  .form-group select option { background: var(--green-dark); color: var(--white); }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .contact-form .btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
+
+  .contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2.5rem;
+  }
+
+  .contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+
+  .contact-info-item svg { color: var(--green-accent); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #111e11;
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(124, 184, 124, 0.1);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-brand img {
+    height: 32px;
+    width: auto;
+  }
+
+  .footer-brand span {
+    font-weight: 500;
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+
+  .footer-copy {
+    font-size: 0.82rem;
+    color: rgba(200, 220, 200, 0.4);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--green-accent); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 968px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 3rem;
+    }
+
+    .hero-desc { margin: 0 auto 2.5rem; }
+    .hero-actions { justify-content: center; }
+    .hero-logo-container { width: 280px; height: 280px; }
+    .hero-logo-container img { width: 180px; }
+
+    .services-grid { grid-template-columns: 1fr 1fr; }
+
+    .about-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .pricing-cards { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  }
+
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+    .mobile-toggle { display: block; }
+
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(240, 245, 237, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 1.5rem 2rem;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-md);
+    }
+
+    .services-grid { grid-template-columns: 1fr; }
+    .trust-inner { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .contact-info { flex-direction: column; align-items: center; gap: 1rem; }
+    .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="SycamoreSystemsLogo.png" alt="Sycamore Systems">
+      <span>Sycamore Systems</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Consultation</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge"><span class="dot"></span> Pennsylvania-Based IT Consultants</div>
+      <h1>Secure your technology.<br><em>Strengthen</em> your peace of mind.</h1>
+      <p class="hero-desc">Sycamore Systems provides expert cybersecurity, IT, and AI consulting for homes and businesses. We help you stay protected and work smarter in an ever-evolving digital landscape.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">
+          Schedule a Consultation
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l6-5-6-5"/></svg>
+        </a>
+        <a href="#services" class="btn-secondary">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-logo-container">
+        <div class="hero-logo-ring"></div>
+        <div class="hero-logo-ring-2"></div>
+        <img src="SycamoreSystemsLogo.png" alt="Sycamore Systems Logo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Security First</h3>
+      <p>Every solution built on strong foundations</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Home & Business</h3>
+      <p>Tailored solutions for every client</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>Responsive</h3>
+      <p>Quick turnaround when you need us</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <h3>Local to PA</h3>
+      <p>Serving the greater Philadelphia area</p>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">IT, cybersecurity &amp; AI services<br>built around <em>your</em> needs</h2>
+      <p class="section-subtitle">Whether you're a homeowner concerned about family safety online, a business protecting critical data, or looking to harness the power of AI — we deliver clear, actionable solutions.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <h3>Network Security Assessments</h3>
+        <p>Comprehensive evaluation of your network infrastructure to identify vulnerabilities before they become problems. We test, document, and recommend actionable fixes.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Home Cybersecurity</h3>
+        <p>Protect your family with secure Wi-Fi configuration, parental controls, smart device hardening, and privacy best practices tailored to your household.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Business IT Consulting</h3>
+        <p>Strategic technology planning for small and mid-size businesses. From security audits to infrastructure recommendations, we help you make informed decisions.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V6a4 4 0 0 1 4-4z"/><path d="M8 8v1a4 4 0 0 0 8 0V8"/><path d="M12 13v3"/><path d="M8 21h8"/><path d="M12 16h.01"/><circle cx="5" cy="17" r="2"/><circle cx="19" cy="17" r="2"/><path d="M5 15v-2a2 2 0 0 1 2-2h1"/><path d="M19 15v-2a2 2 0 0 0-2-2h-1"/></svg>
+        </div>
+        <h3>AI Consulting &amp; Integration</h3>
+        <p>Navigate the AI landscape with confidence. We help businesses identify high-impact AI opportunities, implement tools like chatbots and workflow automation, and develop responsible AI strategies that drive real results.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Device Setup & Hardening</h3>
+        <p>Secure configuration of computers, routers, firewalls, and mobile devices. We set up your technology the right way from the start.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        </div>
+        <h3>Security Awareness Training</h3>
+        <p>Educate your team or family on phishing, social engineering, password hygiene, and safe browsing. Knowledge is the strongest defense.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-6.22-8.56"/><path d="M21 3v6h-6"/></svg>
+        </div>
+        <h3>Incident Response</h3>
+        <p>If the worst happens, we help you respond quickly — containing threats, recovering data, and building a plan to prevent future incidents.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-visual reveal">
+      <div class="about-card">
+        <div class="about-card-pattern"></div>
+        <div class="about-card-content">
+          <div class="about-stat">
+            <div class="about-stat-value">100%</div>
+            <div class="about-stat-label">Client-Focused Approach</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-value">24/7</div>
+            <div class="about-stat-label">Security Never Sleeps</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-value">PA</div>
+            <div class="about-stat-label">Locally Owned & Operated</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <div class="section-label">About Sycamore Systems</div>
+      <h2 class="section-title">Technology that grows<br>with you</h2>
+      <p class="section-subtitle">Sycamore Systems LLC is a Pennsylvania-based IT, cybersecurity, and AI consultancy. We believe strong security and smart technology shouldn't be complicated or out of reach — for anyone.</p>
+      <div class="about-values">
+        <div class="about-value">
+          <div class="about-value-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h4>Plain-Language Security</h4>
+            <p>We explain what we find and why it matters — no jargon, no scare tactics. Just clear guidance you can act on.</p>
+          </div>
+        </div>
+        <div class="about-value">
+          <div class="about-value-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <h4>Built for Real People</h4>
+            <p>From families to small businesses, we tailor every recommendation to your actual situation and budget.</p>
+          </div>
+        </div>
+        <div class="about-value">
+          <div class="about-value-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <h4>Proactive, Not Reactive</h4>
+            <p>We help you get ahead of threats instead of scrambling after something goes wrong.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header reveal">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Straightforward pricing,<br>no hidden fees</h2>
+      <p class="section-subtitle">Choose the service package that fits your needs. Custom scopes available for larger projects.</p>
+    </div>
+    <div class="pricing-cards">
+      <div class="pricing-card reveal">
+        <div class="pricing-type">Residential</div>
+        <div class="pricing-name">Home Security Package</div>
+        <p class="pricing-desc">Complete cybersecurity setup and assessment for your home network.</p>
+        <ul class="pricing-features">
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Wi-Fi security audit
+          </li>
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Device hardening &amp; setup
+          </li>
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Parental controls configuration
+          </li>
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Privacy best practices guide
+          </li>
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Written report &amp; recommendations
+          </li>
+        </ul>
+        <a href="#contact" class="btn-secondary">Get a Quote</a>
+      </div>
+      <div class="pricing-card featured reveal">
+        <div class="pricing-type">Business</div>
+        <div class="pricing-name">Business Security Consulting</div>
+        <p class="pricing-desc">Comprehensive IT security assessment and strategic consulting.</p>
+        <ul class="pricing-features">
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Full network security assessment
+          </li>
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Vulnerability identification &amp; report
+          </li>
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Security policy recommendations
+          </li>
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Employee awareness training
+          </li>
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Ongoing support options
+          </li>
+        </ul>
+        <a href="#contact" class="btn-primary">Schedule Consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-bg-pattern"></div>
+  <div class="contact-inner">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Ready to secure your<br>digital world?</h2>
+    <p class="section-subtitle">Tell us about your situation and we'll get back to you within one business day with a tailored plan.</p>
+    <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+      <input type="hidden" name="access_key" value="6c5bd2f0-6f06-4734-8f4e-d344b159676f">
+      <input type="hidden" name="subject" value="New inquiry from sycamore-systems.com">
+      <input type="hidden" name="from_name" value="Sycamore Systems Website">
+      <input type="checkbox" name="botcheck" style="display:none;">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="John Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="john@example.com" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+        </div>
+        <div class="form-group">
+          <label for="service">Service Interest</label>
+          <select id="service" name="service">
+            <option value="">Select a service...</option>
+            <option value="Home Security Package">Home Security Package</option>
+            <option value="Business Consulting">Business Consulting</option>
+            <option value="AI Consulting">AI Consulting &amp; Integration</option>
+            <option value="Security Training">Security Training</option>
+            <option value="Incident Response">Incident Response</option>
+            <option value="Other / Not Sure">Other / Not Sure</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">How can we help?</label>
+        <textarea id="message" name="message" placeholder="Briefly describe your situation or what you're looking for..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" id="submitBtn">
+        Send Message
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <div id="formStatus" style="text-align:center;margin-top:1rem;font-size:0.9rem;display:none;"></div>
+    </form>
+    <div class="contact-info">
+      <div class="contact-info-item">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        contact@sycamore-systems.com
+      </div>
+      <div class="contact-info-item">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Pennsylvania, USA
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="SycamoreSystemsLogo.png" alt="Sycamore Systems">
+      <span>Sycamore Systems LLC</span>
+    </div>
+    <p class="footer-copy">&copy; 2025 Sycamore Systems LLC. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Close mobile nav on link click
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  // Form handling via Web3Forms
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('formStatus');
+    
+    btn.disabled = true;
+    btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><path d="M12 2v4m0 12v4m-7.07-3.93l2.83-2.83m8.48-8.48l2.83-2.83M2 12h4m12 0h4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83"/></svg> Sending...`;
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        btn.innerHTML = `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Message Sent!`;
+        btn.style.background = 'var(--green-mid)';
+        status.style.display = 'block';
+        status.style.color = 'var(--green-light)';
+        status.textContent = "Thank you! We'll be in touch within one business day.";
+        form.reset();
+        setTimeout(() => {
+          btn.innerHTML = `Send Message <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
+          btn.style.background = '';
+          btn.disabled = false;
+          status.style.display = 'none';
+        }, 5000);
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      btn.innerHTML = `Send Message <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
+      btn.disabled = false;
+      status.style.display = 'block';
+      status.style.color = '#f87171';
+      status.textContent = "Something went wrong. Please try again or email us directly.";
+      setTimeout(() => { status.style.display = 'none'; }, 5000);
+    }
+  }
+</script>
+</body>
+</html>

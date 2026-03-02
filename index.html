@@ -369,6 +369,147 @@
     z-index: 1;
   }
 
+  /* ─── HERO PRODUCTS CALLOUT ─── */
+  .hero-products-callout {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 1.5rem;
+    color: var(--green-light);
+    text-decoration: none;
+    font-size: 0.88rem;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+  .hero-products-callout:hover { opacity: 1; }
+  .hero-products-callout-badge {
+    background: var(--green-accent);
+    color: var(--green-deep);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 100px;
+  }
+
+  /* ─── PRODUCTS ─── */
+  #products { background: var(--white); }
+
+  .products-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .products-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .products-header .section-subtitle { margin: 0 auto; }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .product-card {
+    background: var(--cream);
+    border-radius: 20px;
+    border: 1px solid var(--border-subtle);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--green-accent), var(--green-light));
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .product-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .product-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green-mid);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-card h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .product-card p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    flex: 1;
+  }
+
+  .product-features {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .product-features li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    padding: 0.3rem 0;
+  }
+
+  .product-features li svg { color: var(--green-accent); min-width: 16px; }
+
+  .product-price {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .product-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  @media (max-width: 768px) {
+    .products-grid { grid-template-columns: 1fr; }
+  }
+
   /* ─── TRUST BAR ─── */
   .trust-bar {
     background: var(--white);
@@ -1016,6 +1157,7 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
+      <li><a href="#products">Products</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#contact" class="nav-cta">Get a Consultation</a></li>
@@ -1043,6 +1185,10 @@
         </a>
         <a href="#services" class="btn-secondary">Our Services</a>
       </div>
+      <a href="#products" class="hero-products-callout">
+        <span class="hero-products-callout-badge">New</span>
+        Instant security tools for your business — no waiting, no scheduling →
+      </a>
     </div>
     <div class="hero-visual">
       <div class="hero-logo-container">
@@ -1087,6 +1233,62 @@
     </div>
   </div>
 </div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-inner">
+    <div class="products-header reveal">
+      <div class="section-label">Products</div>
+      <h2 class="section-title">Security tools you can use<br><em>right now</em></h2>
+      <p class="section-subtitle">No scheduling, no waiting. Get instant, actionable security deliverables built specifically for small businesses.</p>
+    </div>
+    <div class="products-grid">
+
+      <!-- Security Scorecard -->
+      <div class="product-card reveal">
+        <div class="product-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 014 4v1a1 1 0 01-1 1H9a1 1 0 01-1-1V6a4 4 0 014-4z"/><path d="M8 8v1a4 4 0 008 0V8"/><polyline points="8 18 10 20 14 16"/><rect x="3" y="12" width="18" height="10" rx="2"/></svg>
+        </div>
+        <div class="product-label">Instant Assessment</div>
+        <h3>Security Scorecard</h3>
+        <p>Answer 38 questions based on the NIST CSF 2.0 framework and get an instant, branded PDF report with your security maturity score, function-by-function breakdown, and top priority action items.</p>
+        <ul class="product-features">
+          <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> NIST CSF 2.0 framework</li>
+          <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Radar chart + detailed scores</li>
+          <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Top 5 priority findings</li>
+          <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Branded PDF delivered by email</li>
+        </ul>
+        <div class="product-price">$97 <span>one-time</span></div>
+        <a href="https://sycamore-scorecard.onrender.com" class="btn-primary" target="_blank" rel="noopener">
+          Get Your Scorecard
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Policy Bundle -->
+      <div class="product-card reveal">
+        <div class="product-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="product-label">Ready-to-Use Templates</div>
+        <h3>SMB Security Policy Bundle</h3>
+        <p>12 professionally written, fully editable security policy templates for small businesses — covering everything from acceptable use to incident response. Written by a CISSP, ready to customize in Word.</p>
+        <ul class="product-features">
+          <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 12 Word (.docx) policy templates</li>
+          <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Implementation checklist included</li>
+          <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Branded & ready to customize</li>
+          <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Instant download after purchase</li>
+        </ul>
+        <div class="product-price">$147 <span>one-time</span></div>
+        <a href="https://sycamore-scorecard.onrender.com/policy-bundle" class="btn-primary" target="_blank" rel="noopener">
+          Get the Policy Bundle
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- SERVICES -->
 <section id="services">
@@ -1351,6 +1553,7 @@
     <p class="footer-copy">&copy; 2025 Sycamore Systems LLC. All rights reserved.</p>
     <ul class="footer-links">
       <li><a href="#services">Services</a></li>
+      <li><a href="#products">Products</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
